@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+
+<<-@SOGEN
+@sogenstart
+
+opt:    o output
+id      optputFile
+param   FILE
+help    Write output to FILE
+
+opt:    name
+param   NAME . "World"
+help    To whom we want to say "Hello"
+:       DEFAULT: "World"
+
+@sogenend
+
+if [ "$outputFile" ]; then
+	exec >"$outputFile"
+fi
+
+echo "Hello $name"
+@SOGEN
+
+if [ "$debug" ]; then
+	sogen_dump
+fi

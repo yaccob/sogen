@@ -1,0 +1,78 @@
+#!/usr/bin/env sh
+
+<<-@SOGEN
+@sogenstart
+
+header: Usage: l [option...] FILE...
+:
+:       Positional arguments:
+:       FILE: File to be processed
+:
+:       Optional arguments:
+
+opt:    version
+help    show version
+
+opt:    verbose
+help    more verbose output
+
+opt:    without-help
+help
+
+opt:    o
+id      output
+params  FILE .
+help    Output to FILE
+:       2nd help line
+
+opt:    i input
+params  FILE file defaultfile
+help   >    Indented: Input from FILE
+:       2nd help line
+
+opt:    from-to
+id      ft
+param   FROM ._from "mySource is my source"
+param   TO ._to myTarget
+help    copy from FROM to TO
+:       a 2nd help line
+:       and a third one.
+:      >    An indented help line
+
+opt:    u
+opt:    v
+opt:    w
+
+opt:    x
+param   p1
+param   p2
+help    Some helptext
+
+opt:    y
+param   p1 ._p1
+param   p2
+help    Some helptext
+
+opt:    z
+param   p1 .
+param   p2
+help    Some helptext
+
+footer: |                                       The footer very indented
+:        This is some text at the end of help.
+:        It can be non-indented ...
+:       |  or indented ...
+:        or non-indented with '|' inside the text ...
+:       |or non-indented with leading '|' ...
+:       |  or indented with '|' inside the text ...
+:       || and also start with a '|' ...
+:       || or even start with a '|' and have another '|' somwehere.
+:        One special case is a trailing '|'|
+:       |  another one a trailing '|' with a leading one|
+:       |  another one lots of '|' like these three ||| plus |
+:        And of course a trailing '|' without a leading one |
+:        And of course a trailing '|' without a leading one in addition to preceeding '|' ||| like those before |
+:
+
+@sogenend
+@SOGEN

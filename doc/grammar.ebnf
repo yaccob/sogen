@@ -1,0 +1,19 @@
+sogendef   ::= '@sogenstart' '\n' header? option* footer? '@sogenend' '\n'
+header     ::= 'header' ':' textlines
+footer     ::= 'footer' ':' textlines
+option     ::= optdef (idddef? paramdef* helpdef?) '\n'*
+optdef     ::= ('OPT' | 'opt') ':'? '[[:blank:]]+' (shortlong) '[[:blank:]]*' '\n'
+idddef     ::= 'id' '[[:blank:]]+' ID '[[:blank:]]*' '\n'
+paramdef   ::= 'param' '[[:blank:]]'+ pdef '[[:blank:]]'* '\n'
+helpdef    ::= 'help' textlines
+
+textlines  ::= '[[:blank:]]+' TEXT '\n' (':' '[[:blank:]]+' TEXT '\n')*
+shortlong  ::= (SHORT LONG) | (LONG SHORT) | SHORT | LONG
+pdef       ::= PNAME ('[[:blank:]]+' ID ('[[:blank:]]+' DEFAULT)?)?
+
+SHORT      ::= '[[:lower:]]'
+LONG       ::= '[[:lower:]]'+ ('-' '[[:lower:]]'+)+
+PNAME      ::= '[[:upper:]]'+
+ID         ::= '[_[:alpha:]]' '[_[:alnum:]]'* | '.'
+DEFAULT    ::=  TEXT
+TEXT       ::= '[^\n]*'

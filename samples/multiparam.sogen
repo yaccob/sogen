@@ -1,0 +1,18 @@
+@sogenstart
+
+opt:   debug
+help   print options
+
+opt:    multi-param
+param   P ._p "value p"
+param   Q ._q "value q"
+help    multi-parameter option
+:       DEFAULTS:
+:       P: 'value p'
+:       Q: 'value q'
+
+@sogenend
+
+if [ "$debug" ]; then
+	sogen_dump
+fi

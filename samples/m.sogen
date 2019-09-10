@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+
+<<-@SOGEN
+@sogenstart
+
+header: Usage: l [option...] FILE...
+
+opt:    debug
+help    print options
+
+opt:    version
+help    show version
+
+opt:    o
+name    output
+params  FILE
+help    Output to FILE
+
+opt:    i input
+params  FILE
+help    Input from FILE
+
+@sogenend
+@SOGEN
+
+if [ "$debug" ]; then
+	sogen_dump
+fi
